@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizazz</title>
+</head>
+
+<body>
+  <h1>Quizazz</h1>
+
+  <h2>What's your favorite color?</h2>
+  <form action="incorrect.html" method="get">
+    <label for="cat">Color</label>
+    <input type="color" name="color" id="color">
+    <button type="submit">Submit</button>
+  </form>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"
+    integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    const correct = '#450084'
+    const tolerance = 5
+
+    const form = document.querySelector('form')
+    form.addEventListener('change', () => {
+      const data = new FormData(form);
+      const color = data.get('color')
+      const delta = chroma.deltaE(correct, color)
+      console.log(delta)
+      if (delta < 15) {
+        form.action = '3.html'
+      }
+        
+    })
+  </script>
+</body>
+
+</html>

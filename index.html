@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizazz</title>
+</head>
+<body>
+  <h1>Quizazz</h1>
+
+  <h2>What's your favorite animal?</h2>
+  <form action="incorrect.html" method="get">
+    <label for="cat">cat</label>
+    <input type="radio" name="animal" value="cat" id="cat" required>
+    <label for="snail">snail</label>
+    <input type="radio" name="animal" value="snail" id="snail">
+    <label for="dog">duke dog</label>
+    <input type="radio" name="animal" value="dog" id="dog">
+    <label for="turkey">turkey</label>
+    <input type="radio" name="animal" value="turkey" id="turkey">
+
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    const form = document.querySelector('form')
+    form.addEventListener('change', ()=>{
+      const data = new FormData(form);
+      if (data.get('animal') === 'dog') {
+        form.action = '2.html'
+      }
+    })
+  </script>
+</body>
+</html>
